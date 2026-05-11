@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Cute Quote</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:wght@300;400;600&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container" style="background-image: url('{{ url_for('static', filename='images/main/' + quote.image) }}');"></div>
+    
+    <div class="overlay"></div>
+
+    <!-- Floating Elements Container -->
+    <div id="floating-container"></div>
+
+    <main class="content">
+        <div class="quote-container">
+            <div class="main-image-wrapper">
+                <img src="{{ url_for('static', filename='images/main/' + quote.image) }}" alt="Aesthetic Background" class="main-quote-image">
+            </div>
+            <p class="quote-text">"{{ quote.quote }}"</p>
+            <div class="divider"></div>
+            <p class="refresh-hint">Refresh for more magic</p>
+        </div>
+    </main>
+
+    <script>
+        const floatingImages = {{ floating_images | tojson }};
+        const staticBase = "{{ url_for('static', filename='images/floating/') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
